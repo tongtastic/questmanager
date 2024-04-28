@@ -11,9 +11,21 @@ class Item extends Model
 {
     use HasFactory;
 
-    public function characters(): MorphToMany
+    public $fillable = [
+        'name',
+        'type',
+        'description',
+        'image',
+        'attributes',
+        'value'
+    ];
+
+    /**
+     * The items that belong to the character.
+     */
+    public function characters(): BelongsToMany
     {
-        return $this->morphedByMany(Character::class, 'itemable');
+        return $this->belongsToMany(Character::class);
     }
 
 }

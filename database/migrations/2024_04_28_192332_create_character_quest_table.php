@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('teams', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', length: 250);
-            $table->text('description')->nullable();
-            $table->json('attributes')->nullable();
-            $table->longText('image')->nullable();
-            $table->timestamps();
+        Schema::create('character_quest', function (Blueprint $table) {
+            $table->foreignId('character_id')->references('id')->on('characters');
+            $table->foreignId('quest_id')->references('id')->on('quests');
         });
     }
 
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('teams');
+        Schema::dropIfExists('character_quest');
     }
 };

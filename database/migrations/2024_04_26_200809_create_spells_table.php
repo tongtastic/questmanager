@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('spells', function (Blueprint $table) {
             $table->id();
+            $table->string('name', length: 250);
+            $table->text('description')->nullable();
+            $table->json('attributes')->nullable();
+            $table->string('type', length: 255);
+            $table->longText('image')->nullable();
+            $table->bigInteger('value');
             $table->timestamps();
         });
     }

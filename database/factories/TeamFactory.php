@@ -17,7 +17,9 @@ class TeamFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->sentence(),
+            'description' => fake()->paragraph(),
+            'image' => fake()->imageUrl(640, 480, 'animals', true)
         ];
     }
 }

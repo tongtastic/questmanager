@@ -11,6 +11,12 @@ class Team extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'name',
+        'description',
+        'image'
+    ];
+
     public function users(): HasMany
     {
         return $this->hasMany(User::class);

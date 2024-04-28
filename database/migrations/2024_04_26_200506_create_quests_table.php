@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('quests', function (Blueprint $table) {
             $table->id();
+            $table->string('name', length: 250);
+            $table->text('description')->nullable();
+            $table->json('attributes')->nullable();
+            $table->longText('image')->nullable();
             $table->timestamps();
         });
     }

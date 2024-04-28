@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('monsters', function (Blueprint $table) {
             $table->id();
+            $table->string('name', length: 250);
+            $table->text('description')->nullable();
+            $table->json('attributes')->nullable();
+            $table->smallInteger('body');
+            $table->smallInteger('mind');
+            $table->smallInteger('attack');
+            $table->smallInteger('defense');
+            $table->string('type', length: 255);
+            $table->longText('image')->nullable();
             $table->timestamps();
         });
     }

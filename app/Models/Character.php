@@ -4,34 +4,53 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Item;
 use App\Models\Spell;
 use App\Models\Skill;
+use App\Models\Quest;
 
 class Character extends Model
 {
     use HasFactory;
+
+    public $fillable = [
+        'name',
+        'user_id',
+        'body',
+        'mind',
+        'experience',
+        'defense',
+        'attack',
+        'gold',
+        'type',
+        'image'
+    ];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function items(): MorphToMany
+    public function items(): BelongsToMany
     {
-        return $this->morphToMany(Item::class, 'itemable');
+        return $this->belongsToMany(Item::class);
     }
 
-    public function spells(): MorphToMany
+    public function spells(): BelongsToMany
     {
-        return $this->morphToMany(Spell::class, 'spellable');
+        return $this->belongsToMany(Spell::class);
     }
 
-    public function skills(): MorphToMany
+    public function skills(): BelongsToMany
     {
-        return $this->morphToMany(Skill::class, 'skillable');
+        return $this->belongsToMany(Skill::class);
+    }
+
+    public function quests(): BelongsToMany
+    {
+        return $this->belongsToMany(Quest::class);
     }
 }
