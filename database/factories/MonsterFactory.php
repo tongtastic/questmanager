@@ -29,4 +29,5 @@ class MonsterFactory extends Factory
             'type' => rand(1,30),
             'image' => fake()->imageUrl(640, 480, 'animals', true)
         ];
+    }
 }
